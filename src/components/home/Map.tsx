@@ -25,7 +25,7 @@ const Map = () => {
         <GoogleMapReact
           bootstrapURLKeys={{
             // remove the key if you want to fork
-            key: "",
+            key: "AIzaSyDLiSGJ4AF_SjHLxxznv9PCpRBbXwjXnVM",
             language: "en",
             region: "US",
           }}
