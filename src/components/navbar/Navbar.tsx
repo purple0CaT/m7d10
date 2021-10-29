@@ -9,12 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addTheName, setSearch } from "../../redux/action/actions";
 import NavProf from "./NavProf";
+import { useHistory } from "react-router";
 
 function Navbar() {
   const [userName, setuserName] = useState<string>("");
   const user = useSelector((state: ReduxStore) => state.user);
   const weather = useSelector((state: ReduxStore) => state.weather);
   const dispatch = useDispatch();
+  const history = useHistory();
   //
   const [DropDown, setDropDown] = useState(false);
   const closeDropdown = () => setDropDown(false);
@@ -38,6 +40,9 @@ function Navbar() {
                 placeholder="...search"
                 onChange={(e) => {
                   dispatch(setSearch(e.target.value));
+                  if (e.target.value.length > 2) {
+                    history.push("/");
+                  }
                 }}
               />
             </div>

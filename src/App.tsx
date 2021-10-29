@@ -21,7 +21,7 @@ function App(props: GeolocatedProps) {
       dispatch(setCoords({ lon: longitude, lat: latitude }));
     }
     // setCordinatesFetch();
-  }, [props.coords]);
+  }, []);
   return (
     <Router>
       <Navbar />

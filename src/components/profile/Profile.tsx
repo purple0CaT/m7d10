@@ -26,11 +26,10 @@ function Profile(props: any, { history }: Types) {
 
   //
   useEffect(() => {
-    addCordinates();
     if (!user.name) {
       history.push("/");
     }
-  }, [props.coords]);
+  }, []);
   return (
     <Container>
       <br />
