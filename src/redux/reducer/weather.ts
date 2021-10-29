@@ -30,7 +30,7 @@ export const WeatherRed = (state = initialState.weather, action: any) => {
     case "USER_POSITION":
       return {
         ...state,
-        cords: action.payload,
+        mycord: { longitude: action.payload.lon, latitude: action.payload.lat },
       };
     default:
       return state;

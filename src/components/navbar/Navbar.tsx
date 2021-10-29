@@ -8,6 +8,7 @@ import { ReduxStore } from "../../types/storeType";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addTheName, setSearch } from "../../redux/action/actions";
+import NavProf from "./NavProf";
 
 function Navbar() {
   const [userName, setuserName] = useState<string>("");
@@ -88,7 +89,9 @@ function Navbar() {
                     >
                       <h5 className="my-0">{user.name}</h5>{" "}
                     </NavLink>
-                    {/* {DropDown && <NavProf closeDropdown={closeDropdown} />} */}
+                    <div>
+                      {DropDown && <NavProf closeDropdown={closeDropdown} />}
+                    </div>
                   </OutsideClickHandler>
                 </div>
               </>

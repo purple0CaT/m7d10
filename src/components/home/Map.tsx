@@ -1,7 +1,7 @@
 import { Component, useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { useSelector } from "react-redux";
-import { ReduxStore } from "../../types/storeType";
+import { MyCords, ReduxStore } from "../../types/storeType";
 //
 const Marker = ({ text }: any) => (
   <>
@@ -10,7 +10,7 @@ const Marker = ({ text }: any) => (
   </>
 );
 
-const Map = (props: any) => {
+const Map = () => {
   //
   const weather = useSelector((state: ReduxStore) => state.weather);
   const [Load, setLoad] = useState(false);

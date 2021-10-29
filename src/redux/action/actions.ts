@@ -15,8 +15,8 @@ export const setCoords = (cords: any) => {
     dispatch({
       type: "USER_POSITION",
       payload: {
-        longitude: cords.lon,
-        latitude: cords.lat,
+        lon: cords.lon,
+        lat: cords.lat,
       },
     });
     const state = getState();

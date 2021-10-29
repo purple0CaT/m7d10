@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { geolocated } from "react-geolocated";
 import { useDispatch } from "react-redux";
 import { setCoords } from "./redux/action/actions";
+import Profile from "./components/profile/Profile";
 
 function App(props: any) {
   const dispatch = useDispatch();
@@ -18,7 +19,6 @@ function App(props: any) {
     let latitude = props.coords ? props.coords.latitude : null; //
     if (longitude & latitude) {
       dispatch(setCoords({ lon: longitude, lat: latitude }));
-      console.log(longitude, latitude);
     }
   }, [props.coords]);
   return (
@@ -26,6 +26,11 @@ function App(props: any) {
       <Navbar />
       <Switch>
         <Route path="/" exact render={() => <Home />} />
+        <Route
+          path="/profile"
+          exact
+          render={(routerProps) => <Profile {...routerProps} />}
+        />
         <Route
           render={() => (
             <>
