@@ -3,9 +3,10 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { runSearch } from "../../redux/action/actions";
 import { ReduxStore } from "../../types/storeType";
-import { FiNavigation2 } from "react-icons/fi";
+import { FiNavigation2, FiSunrise, FiSunset } from "react-icons/fi";
 import Map from "./Map";
 import FourDay from "./FourDay";
+import dateFormat from "dateformat";
 
 function MainCard() {
   const [WeatherImg, setWeatherImg] = useState({
@@ -134,14 +135,39 @@ function MainCard() {
                 </div>
               </div>
               {/* CITy COLUMN */}
-              <div className="text-right">
-                <h1>{weather.oneday.name}</h1>
-                <span className="font-weight-bold text-muted">
-                  {weather.oneday.sys.country}
-                </span>
+              <div className="text-right d-flex flex-column justify-content-between">
+                <div>
+                  <h1>{weather.oneday.name}</h1>
+                  <span className="font-weight-bold text-muted">
+                    {weather.oneday.sys.country}
+                  </span>
+                </div>
+                <div className="d-flex flex-column">
+                  <span className="text-white d-flex align-items-center justify-content-end my-1">
+                    <FiSunrise
+                      style={{ color: "yellow", marginRight: "0.5rem" }}
+                      size="1.5rem"
+                    />
+                    {dateFormat(
+                      new Date(weather.oneday.sys.sunrise * 1000),
+                      "HH:MM"
+                    )}
+                  </span>
+                  <span className="text-muted d-flex align-items-center justify-content-end my-1">
+                    <FiSunset
+                      style={{ color: "black", marginRight: "0.6rem" }}
+                      size="1.5rem"
+                    />
+                    {dateFormat(
+                      new Date(weather.oneday.sys.sunset * 1000),
+                      "HH:MM"
+                    )}
+                  </span>
+                </div>
               </div>
             </div>
           </Col>
+          {/* Map */}
           <Col xs="12" md="4" className="mx-auto my-1 p-1">
             <Map />
           </Col>
