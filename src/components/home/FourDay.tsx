@@ -13,7 +13,7 @@ function FourDay() {
     <Col xs="12">
       <br />
       <div className="mainCards">
-        {weather.days.list &&
+        {weather.days.list?.length > 1 &&
           weather.days.list.map((W: any) => (
             <div className="d-flex flex-column smallCard">
               <div>
