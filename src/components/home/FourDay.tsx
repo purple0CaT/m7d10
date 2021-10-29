@@ -27,7 +27,7 @@ function FourDay() {
                 {weather.oneday.weather[0].main},{" "}
                 {weather.oneday.weather[0].description}
               </small>
-              <span className="text-muted font-weight-bold">
+              <span className="text-muted font-weight-bold text-right">
                 {Math.floor(W.main.temp)}°C
               </span>
               <small>
@@ -59,7 +59,10 @@ function FourDay() {
                 </div>
               </div>
               <br />
-              <p>{dateFormat(W.sys.dt_txt, "HH:MM d mmm")}</p>
+              <div className="d-flex justify-content-between">
+                <span>{dateFormat(W.dt_txt, "HH:MM ")}</span>
+                <span>{dateFormat(W.dt_txt, "d mmm")}</span>
+              </div>
             </div>
           ))}
       </div>

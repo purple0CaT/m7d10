@@ -12,7 +12,15 @@ const Map = () => {
     setTimeout(() => setLoad(false), 1);
   }, [weather.oneday.coord.lat]);
   return (
-    <div style={{ height: "200px", width: "100%" }}>
+    <div
+      style={{
+        height: "13rem",
+        width: "100%",
+        // borderRadius: "20px !important",
+        // overflow: "hidden !important",
+        // zIndex: 900,
+      }}
+    >
       {!Load && (
         <GoogleMapReact
           bootstrapURLKeys={{
@@ -25,13 +33,13 @@ const Map = () => {
             lat: weather.oneday.coord.lat,
             lng: weather.oneday.coord.lon,
           }}
-          defaultZoom={10}
+          defaultZoom={9}
         >
-          <Marker
+          {/* <Marker
             lat={weather.oneday.coord.lat}
             lng={weather.oneday.coord.lon}
             text="My Marker"
-          />
+          /> */}
         </GoogleMapReact>
       )}
     </div>

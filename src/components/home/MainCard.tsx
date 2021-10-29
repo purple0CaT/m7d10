@@ -73,7 +73,7 @@ function MainCard() {
     <Col xs="12">
       {weather.loading ? (
         <Row>
-          <Col xs="12" md="8">
+          <Col xs="12" md="8" className="my-1">
             <div
               className="d-flex justify-content-between mainCard p-2"
               style={{
@@ -141,7 +141,11 @@ function MainCard() {
               </div>
             </div>
           </Col>
-          <Col xs="10" md="4" className="mx-auto mt-1">
+          <Col
+            xs="12"
+            md="4"
+            className="mx-auto my-1 p-1"
+          >
             <Map />
           </Col>
         </Row>
