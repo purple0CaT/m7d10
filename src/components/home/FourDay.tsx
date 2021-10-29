@@ -8,16 +8,7 @@ import dateFormat from "dateformat";
 
 function FourDay() {
   const weather = useSelector((state: ReduxStore) => state.weather);
-  const dispatch = useDispatch();
-  let as = weather.days.hourly;
-  console.log(format(weather.days.list[0].dt, "H:m d MMM "));
-  console.log(formatISO(weather.days.list[0].dt, { representation: "date" }));
-  //
-  //   const [WeatherImg, setWeatherImg] = useState({
-  //     state: "",
-  //     colorOne: "",
-  //     colorTwo: "",
-  //   });
+
   return (
     <Col xs="12">
       <br />
