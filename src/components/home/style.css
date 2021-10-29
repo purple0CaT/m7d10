@@ -1,0 +1,23 @@
+body {
+  background-color: rgba(128, 73, 0, 0.158);
+}
+.mainCard {
+  border-radius: 20px;
+  background-color: rgb(182, 182, 182);
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  outline: 1px solid rgba(128, 128, 128, 0.162);
+  outline-offset: -4px;
+}
+.compass {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid grey;
+  background-color: rgba(127, 255, 212, 0.2);
+}
+.imageWeather {
+}

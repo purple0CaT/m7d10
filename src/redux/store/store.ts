@@ -11,13 +11,16 @@ import persistStore from "redux-persist/es/persistStore";
 const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const initialState: any = {
+export const initialState: ReduxStore = {
   user: {
     name: "",
   },
   weather: {
     search: "",
-    data: [],
+    oneday: {},
+    fourday: [],
+    latest: [],
+    loading: false,
   },
 };
 

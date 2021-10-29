@@ -4,8 +4,10 @@ interface ReduxStore {
   };
   weather: {
     search: string;
-    data: any;
-    //   today: {}
+    oneday: any;
+    fourday: any;
+    latest: any;
+    loading: boolean;
   };
 }
 
