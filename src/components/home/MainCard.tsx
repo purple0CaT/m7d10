@@ -107,6 +107,12 @@ function MainCard() {
                   </small>
                   {Math.floor(weather.oneday.main.feels_like)}°C
                 </span>
+                <span>
+                  <small className="text-muted font-weight-bold">
+                    Pressure:{" "}
+                  </small>
+                  {weather.oneday.main.pressure} hPa
+                </span>
                 <div style={{ maxHeight: "5rem" }}>
                   <span className="mr-2 my-1">
                     <small className="text-muted font-weight-bold">Min: </small>
