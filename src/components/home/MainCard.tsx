@@ -73,7 +73,7 @@ function MainCard() {
     <Col xs="12">
       {weather.loading ? (
         <Row>
-          <Col xs="8">
+          <Col xs="12" md="8">
             <div
               className="d-flex justify-content-between mainCard p-2"
               style={{
@@ -84,9 +84,13 @@ function MainCard() {
               <div className="d-flex flex-column justify-content-between">
                 {/* first col */}
                 <div className="d-flex justify-content-between">
-                  <img src={WeatherImg.state} alt="" className="imageWeather" />
+                  <img
+                    src={`https://openweathermap.org/img/wn/${weather.oneday.weather[0].icon}@2x.png`}
+                    alt=""
+                    className="imageWeather"
+                  />
                   <div className="d-flex flex-column text-left">
-                    <h3>{weather.oneday.main.temp}°C</h3>
+                    <h3>{Math.floor(weather.oneday.main.temp)}°C</h3>
                     <span>
                       {weather.oneday.weather[0].main},{" "}
                       {weather.oneday.weather[0].description}
@@ -99,16 +103,16 @@ function MainCard() {
                   <small className="text-muted font-weight-bold">
                     Feels like:
                   </small>
-                  {weather.oneday.main.feels_like}°C
+                  {Math.floor(weather.oneday.main.feels_like)}°C
                 </span>
                 <div style={{ maxHeight: "5rem" }}>
                   <span className="mr-2 my-1">
                     <small className="text-muted font-weight-bold">Min: </small>
-                    {weather.oneday.main.temp_min}°C
+                    {Math.floor(weather.oneday.main.temp_min)}°C
                   </span>
                   <span>
                     <small className="text-muted font-weight-bold">Max: </small>
-                    {weather.oneday.main.temp_max}°C
+                    {Math.floor(weather.oneday.main.temp_max)}°C
                   </span>
                 </div>
                 {/* WIND COL */}
@@ -137,7 +141,7 @@ function MainCard() {
               </div>
             </div>
           </Col>
-          <Col xs="4">
+          <Col xs="10" md="4" className="mx-auto mt-1">
             <Map />
           </Col>
         </Row>
