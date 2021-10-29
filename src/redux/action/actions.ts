@@ -17,6 +17,21 @@ export const setSearch = (value: string | null) => ({
   type: "SET_SEARCH",
   payload: value,
 });
+export const setCleanAll = () => {
+  return async (dispatch: Dispatch) => {
+    dispatch({ type: "WEATHER_LOADING", payload: false });
+    dispatch({
+      type: "SET_SEARCH",
+      payload: "",
+    });
+    dispatch({
+      type: "WEATHER_DAY_ADD",
+      payload: {},
+    });
+    dispatch({ type: "WEATHER_FDAYS_ADD", payload: {} });
+  };
+};
+
 // SEARCH BY COORDINATES
 export const setCoords = (cords: any) => {
   return async (dispatch: Dispatch) => {

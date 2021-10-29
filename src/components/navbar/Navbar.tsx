@@ -7,7 +7,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 import { ReduxStore } from "../../types/storeType";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { addTheName, setSearch } from "../../redux/action/actions";
+import { addTheName, setCleanAll, setSearch } from "../../redux/action/actions";
 import NavProf from "./NavProf";
 import { useHistory } from "react-router";
 
@@ -28,7 +28,7 @@ function Navbar() {
             <Link
               to="/"
               className="mr-3 navIcon"
-              onClick={(x) => dispatch(setSearch(""))}
+              onClick={(x) => dispatch(setCleanAll())}
             >
               <AiFillHome size="1.8rem" className="" />
             </Link>
