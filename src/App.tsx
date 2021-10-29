@@ -13,13 +13,15 @@ import Profile from "./components/profile/Profile";
 function App(props: any) {
   const dispatch = useDispatch();
 
+  const setCordinatesFetch = () => {};
+
   useEffect(() => {
-    // MAP
     let longitude = props.coords ? props.coords.longitude : null; //
     let latitude = props.coords ? props.coords.latitude : null; //
     if (longitude & latitude) {
       dispatch(setCoords({ lon: longitude, lat: latitude }));
     }
+    setCordinatesFetch();
   }, [props.coords]);
   return (
     <Router>

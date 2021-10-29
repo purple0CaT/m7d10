@@ -2,32 +2,79 @@ import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, RouteComponentProps } from "react-router-dom";
-import { setCoords } from "../../redux/action/actions";
+import { clearCoord, setCoords } from "../../redux/action/actions";
 import { ReduxStore } from "../../types/storeType";
 import ProfMap from "./ProfMap";
+import "./style.css";
+interface Types extends RouteComponentProps {}
 
-function Profile({ history }: RouteComponentProps) {
+function Profile(props: any, { history }: Types) {
   const weathCoord = useSelector((state: ReduxStore) => state.weather.mycord);
   const user = useSelector((state: ReduxStore) => state.user);
   const dispatch = useDispatch();
+  //
+  const addCordinates = () => {
+    // history.push("/");
+    // if (weathCoord.longitude) {
+    //   dispatch(
+    //     setCoords({ lon: weathCoord.longitude, lat: weathCoord.latitude })
+    //   );
+    // }
+  };
+  //
   useEffect(() => {
+    addCordinates();
     if (!user.name) {
       history.push("/");
     }
-  }, []);
+  }, [props.coords]);
   return (
     <Container>
+      <br />
+
       <Row>
         <Col xs="6">
-          <div className="prof-card p-1 my-1">
-            <div>
-              <Link to="/" onClick={() => dispatch(setCoords(weathCoord))}>
-                Check my curent loc
-              </Link>
-              <ProfMap cords={weathCoord} />
-            </div>
-            <div>Add my curent loc</div>
-            <div>Delete my curent loc</div>
+          <div className="profCard p-1 my-1  text-center">
+            {weathCoord.latitude !== "" && (
+              <>
+                <div className="my-2">
+                  <Link
+                    className="navBtn"
+                    to="/"
+                    onClick={() =>
+                      dispatch(
+                        setCoords({
+                          lon: weathCoord.longitude,
+                          lat: weathCoord.latitude,
+                        })
+                      )
+                    }
+                  >
+                    Check the weather near me
+                  </Link>
+                </div>
+                <div className="d-flex justify-content-center my-2">
+                  <ProfMap />
+                </div>
+                <div className=" my-2">
+                  <button
+                    className="navBtn"
+                    onClick={() => {
+                      dispatch(clearCoord());
+                    }}
+                  >
+                    Delete my curent location
+                  </button>
+                </div>
+              </>
+            )}
+            {!weathCoord.latitude && (
+              <div className="my-2">
+                <button className="navBtn" onClick={() => addCordinates()}>
+                  Add my curent loc
+                </button>
+              </div>
+            )}
           </div>
         </Col>
       </Row>

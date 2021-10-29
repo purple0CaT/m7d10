@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { clearCoord, logOut } from "../../redux/action/actions";
 // import { cleanUpAct, logOutUser } from "../../redux/action/action";
 interface Types {
   closeDropdown: () => void;
@@ -37,8 +38,8 @@ function NavProf({ closeDropdown }: Types) {
         to="/"
         activeClassName="selectedNavb"
         onClick={() => {
-          // dispatch(logOutUser());
-          // dispatch(cleanUpAct());
+          dispatch(logOut());
+          dispatch(clearCoord());
         }}
       >
         <span className="text-dropdown">Log out</span>

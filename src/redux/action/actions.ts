@@ -4,14 +4,24 @@ export const addTheName = (value: string) => ({
   type: "ADD_NAME",
   payload: value,
 });
+export const logOut = () => ({
+  type: "LOG_OUT",
+  payload: "",
+});
+export const clearCoord = () => ({
+  type: "USER_POSITION_DELETE",
+  payload: "",
+});
 
 export const setSearch = (value: string | null) => ({
   type: "SET_SEARCH",
   payload: value,
 });
+// SEARCH BY COORDINATES
 export const setCoords = (cords: any) => {
-  return async (dispatch: Dispatch, getState: any) => {
+  return async (dispatch: Dispatch) => {
     dispatch({ type: "WEATHER_LOADING", payload: false });
+    dispatch({ type: "SET_SEARCH", payload: "" });
     dispatch({
       type: "USER_POSITION",
       payload: {
@@ -19,7 +29,6 @@ export const setCoords = (cords: any) => {
         lat: cords.lat,
       },
     });
-    const state = getState();
     // 1 day
     let url = `${process.env.REACT_APP_URLFETCH}/weather?lat=${cords.lat}&lon=${cords.lon}&units=metric&appid=${process.env.REACT_APP_APIKEY}`;
     try {
@@ -27,15 +36,15 @@ export const setCoords = (cords: any) => {
       if (res.ok) {
         const weather: any = await res.json();
         dispatch({ type: "WEATHER_DAY_ADD", payload: weather });
-        // 4day
-        // url = `${process.env.REACT_APP_URLFETCH}/onecall?lat=${weather.coord.lat}&lon=${weather.coord.lon}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
+        // 5Days
+        // SEARCH 5 DAYS
         url = `${process.env.REACT_APP_URLFETCH}/forecast?lat=${cords.lat}&lon=${cords.lon}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
         try {
           const response = await fetch(url);
           if (res.ok) {
             const Fweather: any = await response.json();
-            dispatch({ type: "WEATHER_FDAYS_ADD", payload: Fweather });
             dispatch({ type: "WEATHER_LOADING", payload: true });
+            dispatch({ type: "WEATHER_FDAYS_ADD", payload: Fweather });
           } else {
             console.log("Error");
           }
@@ -48,6 +57,7 @@ export const setCoords = (cords: any) => {
   };
 };
 
+// QUERY SEARCH
 export const runSearch = () => {
   return async (dispatch: Dispatch, getState: any) => {
     dispatch({ type: "WEATHER_LOADING", payload: false });
@@ -60,14 +70,13 @@ export const runSearch = () => {
         const weather: any = await res.json();
         dispatch({ type: "WEATHER_DAY_ADD", payload: weather });
         // 4day
-        // url = `${process.env.REACT_APP_URLFETCH}/onecall?lat=${weather.coord.lat}&lon=${weather.coord.lon}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
         url = `${process.env.REACT_APP_URLFETCH}/forecast?q=${state.weather.search}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
         try {
           const response = await fetch(url);
           if (res.ok) {
             const Fweather: any = await response.json();
-            dispatch({ type: "WEATHER_FDAYS_ADD", payload: Fweather });
             dispatch({ type: "WEATHER_LOADING", payload: true });
+            dispatch({ type: "WEATHER_FDAYS_ADD", payload: Fweather });
           } else {
             console.log("Error");
           }

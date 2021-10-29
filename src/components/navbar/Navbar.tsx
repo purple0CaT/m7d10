@@ -78,17 +78,17 @@ function Navbar() {
                       setDropDown(false);
                     }}
                   >
-                    <NavLink
-                      activeClassName="selectedNavb"
-                      exact
-                      to="/profile"
+                    <div
+                      // activeClassName="selectedNavb"
+                      // exact
+                      // to="/profile"
                       className="navBtn profileName d-flex align-items-center mr-2"
                       onClick={() => setDropDown(!DropDown)}
                       onMouseEnter={() => setDropDown(!DropDown)}
                       onMouseOver={() => setDropDown(true)}
                     >
                       <h5 className="my-0">{user.name}</h5>{" "}
-                    </NavLink>
+                    </div>
                     <div>
                       {DropDown && <NavProf closeDropdown={closeDropdown} />}
                     </div>

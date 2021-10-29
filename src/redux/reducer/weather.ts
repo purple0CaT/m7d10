@@ -32,6 +32,11 @@ export const WeatherRed = (state = initialState.weather, action: any) => {
         ...state,
         mycord: { longitude: action.payload.lon, latitude: action.payload.lat },
       };
+    case "USER_POSITION_DELETE":
+      return {
+        ...state,
+        mycord: { longitude: "", latitude: "" },
+      };
     default:
       return state;
   }

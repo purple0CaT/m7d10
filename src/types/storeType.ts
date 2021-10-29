@@ -12,8 +12,8 @@ interface ReduxStore {
   };
 }
 interface MyCords {
-  longitude: null;
-  latitude: null;
+  longitude: number | null;
+  latitude: number | null;
 }
 
 export type { ReduxStore, MyCords };

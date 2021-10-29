@@ -8,6 +8,11 @@ export const UserRed = (state = initialState.user, action: any) => {
         ...state,
         name: action.payload,
       };
+    case "LOG_OUT":
+      return {
+        ...state,
+        name: action.payload,
+      };
     default:
       return state;
   }
