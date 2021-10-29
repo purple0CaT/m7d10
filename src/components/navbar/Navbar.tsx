@@ -21,7 +21,7 @@ function Navbar() {
     <div className="navContainer">
       <Container>
         <Row className="navBar">
-          <Col xs="12" md="4" className="d-flex align-items-center my-1">
+          <Col xs="6" md="4" className="d-flex align-items-center my-1">
             <Link
               to="/"
               className="mr-3 navIcon"
@@ -42,7 +42,7 @@ function Navbar() {
             </div>
           </Col>
           <Col
-            xs="12"
+            xs="6"
             md="8"
             className="d-flex align-items-center justify-content-end my-1"
           >
