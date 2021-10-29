@@ -9,7 +9,6 @@ function Home() {
       <br />
       <Row>
         <MainCard />
-        <FourDay />
       </Row>
     </Container>
   );

@@ -5,6 +5,7 @@ import { runSearch } from "../../redux/action/actions";
 import { ReduxStore } from "../../types/storeType";
 import { FiNavigation2 } from "react-icons/fi";
 import Map from "./Map";
+import FourDay from "./FourDay";
 
 function MainCard() {
   const [WeatherImg, setWeatherImg] = useState({
@@ -70,9 +71,9 @@ function MainCard() {
     }
   }, [weather.search]);
   return (
-    <Col xs="12">
+    <>
       {weather.loading ? (
-        <Row>
+        <>
           <Col xs="12" md="8" className="my-1">
             <div
               className="d-flex justify-content-between mainCard p-2"
@@ -141,20 +142,17 @@ function MainCard() {
               </div>
             </div>
           </Col>
-          <Col
-            xs="12"
-            md="4"
-            className="mx-auto my-1 p-1"
-          >
+          <Col xs="12" md="4" className="mx-auto my-1 p-1">
             <Map />
           </Col>
-        </Row>
+          <FourDay />
+        </>
       ) : (
         <div className="text-center w-100">
           <h1 className="text-muted">Search city</h1>
         </div>
       )}
-    </Col>
+    </>
   );
 }
 
