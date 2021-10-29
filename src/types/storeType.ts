@@ -5,7 +5,7 @@ interface ReduxStore {
   weather: {
     search: string;
     oneday: any;
-    fourday: any;
+    days: any;
     latest: any;
     loading: boolean;
   };

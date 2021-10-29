@@ -18,7 +18,7 @@ export const initialState: ReduxStore = {
   weather: {
     search: "",
     oneday: {},
-    fourday: [],
+    days: [],
     latest: [],
     loading: false,
   },

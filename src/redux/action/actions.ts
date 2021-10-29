@@ -21,12 +21,13 @@ export const runSearch = () => {
         const weather: any = await res.json();
         dispatch({ type: "WEATHER_DAY_ADD", payload: weather });
         // 4day
-        url = `${process.env.REACT_APP_URLFETCH}/onecall?lat=${weather.coord.lat}&lon=${weather.coord.lon}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
+        // url = `${process.env.REACT_APP_URLFETCH}/onecall?lat=${weather.coord.lat}&lon=${weather.coord.lon}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
+        url = `${process.env.REACT_APP_URLFETCH}/forecast?q=${state.weather.search}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
         try {
           const response = await fetch(url);
           if (res.ok) {
             const Fweather: any = await response.json();
-            dispatch({ type: "WEATHER_FOUR_ADD", payload: Fweather });
+            dispatch({ type: "WEATHER_FDAYS_ADD", payload: Fweather });
             dispatch({ type: "WEATHER_LOADING", payload: true });
           } else {
             console.log("Error");
