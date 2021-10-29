@@ -24,8 +24,7 @@ const Map = () => {
       {!Load && (
         <GoogleMapReact
           bootstrapURLKeys={{
-            // remove the key if you want to fork
-            key: `${process.env.REACT_APP_MAPAPI}`,
+            key: process.env.REACT_APP_MAPAPI!,
             language: "en",
             region: "US",
           }}
