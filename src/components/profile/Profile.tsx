@@ -35,7 +35,7 @@ function Profile(props: any, { history }: Types) {
       <br />
 
       <Row>
-        <Col xs="6">
+        <Col xs="12" md='6'>
           <div className="profCard p-1 my-1  text-center">
             {weathCoord.latitude && (
               <>
