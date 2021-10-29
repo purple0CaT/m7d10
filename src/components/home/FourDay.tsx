@@ -55,8 +55,8 @@ function FourDay() {
             </div>
             <br />
             <div className="d-flex justify-content-between">
-              <span>{dateFormat(W.dt_txt, "HH:MM ")}</span>
-              <span>{dateFormat(W.dt_txt, "d mmm")}</span>
+              <span>{dateFormat(W.dt, "HH:MM ")}</span>
+              <span>{dateFormat(W.dt, "d mmm")}</span>
             </div>
           </div>
         ))}
