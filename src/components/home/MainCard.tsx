@@ -65,6 +65,7 @@ function MainCard() {
       }
     }
   }, [weather.oneday]);
+
   //
   useEffect(() => {
     if (weather.search.length > 2) {
@@ -75,7 +76,7 @@ function MainCard() {
     <>
       {weather.loading ? (
         <>
-          <Col xs="12" md="8" className="my-1">
+          <Col xs="12" md="6" className="my-1 p-1">
             <div
               className="d-flex justify-content-between mainCard p-2"
               style={{
@@ -85,14 +86,16 @@ function MainCard() {
               {/* LEFT COLUMN */}
               <div className="d-flex flex-column justify-content-between">
                 {/* first col */}
-                <div className="d-flex justify-content-between">
+                <div className="d-flex justify-content-between align-items-center">
                   <img
                     src={`https://openweathermap.org/img/wn/${weather.oneday.weather[0].icon}@2x.png`}
                     alt=""
                     className="imageWeather"
                   />
                   <div className="d-flex flex-column text-left">
-                    <h3>{Math.floor(weather.oneday.main.temp)}°C</h3>
+                    <h2 className="text-muted">
+                      {Math.floor(weather.oneday.main.temp)}°C
+                    </h2>
                     <span>
                       {weather.oneday.weather[0].main},{" "}
                       {weather.oneday.weather[0].description}
@@ -141,7 +144,7 @@ function MainCard() {
                 </div>
               </div>
               {/* CITy COLUMN */}
-              <div className="text-right d-flex flex-column justify-content-between">
+              <div className="text-right d-flex flex-column justify-content-between mr-md-3">
                 <div>
                   <h1>{weather.oneday.name}</h1>
                   <span className="font-weight-bold text-muted">
@@ -174,7 +177,7 @@ function MainCard() {
             </div>
           </Col>
           {/* Map */}
-          <Col xs="12" md="4" className="mx-auto my-1 p-1">
+          <Col xs="12" md="5" className="ml-auto my-1 p-1">
             <Map />
           </Col>
           <FourDay />
@@ -187,5 +190,5 @@ function MainCard() {
     </>
   );
 }
-
 export default MainCard;
+// export default MainCard;

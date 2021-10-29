@@ -2,8 +2,12 @@ import { Col, Container, Row } from "react-bootstrap";
 import FourDay from "./FourDay";
 import "./style.css";
 import MainCard from "./MainCard";
+import { useEffect } from "react";
 
 function Home() {
+  useEffect(() => {
+
+  }, []);
   return (
     <Container>
       <br />

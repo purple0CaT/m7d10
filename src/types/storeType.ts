@@ -8,6 +8,10 @@ interface ReduxStore {
     days: any;
     latest: any;
     loading: boolean;
+    mycord: {
+      longitude: number | null;
+      latitude: number | null;
+    };
   };
 }
 

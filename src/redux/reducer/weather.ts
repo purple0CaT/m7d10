@@ -27,6 +27,11 @@ export const WeatherRed = (state = initialState.weather, action: any) => {
         ...state,
         loading: action.payload,
       };
+    case "USER_POSITION":
+      return {
+        ...state,
+        cords: action.payload,
+      };
     default:
       return state;
   }

@@ -2,11 +2,19 @@ import { Component, useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { useSelector } from "react-redux";
 import { ReduxStore } from "../../types/storeType";
-const Marker = ({ text }: any) => <div>{text}</div>;
+//
+const Marker = ({ text }: any) => (
+  <>
+    <div className="pin"></div>
+    <div className="pulse"></div>
+  </>
+);
 
-const Map = () => {
+const Map = (props: any) => {
+  //
   const weather = useSelector((state: ReduxStore) => state.weather);
   const [Load, setLoad] = useState(false);
+
   useEffect(() => {
     setLoad(true);
     setTimeout(() => setLoad(false), 1);
@@ -14,11 +22,12 @@ const Map = () => {
   return (
     <div
       style={{
-        height: "15rem",
+        height: "100%",
+        minHeight: "12rem",
         width: "100%",
-        // borderRadius: "20px !important",
-        // overflow: "hidden !important",
-        // zIndex: 900,
+        border: "1px solid rgba(117, 117, 117, 0.2)",
+        borderRadius: "15%",
+        overflow: "hidden",
       }}
     >
       {!Load && (
@@ -34,11 +43,11 @@ const Map = () => {
           }}
           defaultZoom={8}
         >
-          {/* <Marker
+          <Marker
             lat={weather.oneday.coord.lat}
             lng={weather.oneday.coord.lon}
-            text="My Marker"
-          /> */}
+            text={weather.oneday.name}
+          />
         </GoogleMapReact>
       )}
     </div>

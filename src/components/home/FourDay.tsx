@@ -10,9 +10,12 @@ function FourDay() {
   return (
     <Col xs="12">
       <br />
-      <div className="mainCards">
+      <div className="mainCards mb-3s">
         {weather.days.list.map((W: any) => (
-          <div className="d-flex flex-column smallCard">
+          <div
+            className="d-flex flex-column smallCard"
+            key={W.main.temp + W.dt}
+          >
             <div>
               <img
                 src={`https://openweathermap.org/img/wn/${W.weather[0].icon}@2x.png`}
