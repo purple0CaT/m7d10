@@ -25,7 +25,7 @@ const Map = () => {
         <GoogleMapReact
           bootstrapURLKeys={{
             // remove the key if you want to fork
-            key: "AIzaSyDLiSGJ4AF_SjHLxxznv9PCpRBbXwjXnVM",
+            key: `${process.env.REACT_APP_MAPAPI}`,
             language: "en",
             region: "US",
           }}
@@ -33,7 +33,7 @@ const Map = () => {
             lat: weather.oneday.coord.lat,
             lng: weather.oneday.coord.lon,
           }}
-          defaultZoom={9}
+          defaultZoom={8}
         >
           {/* <Marker
             lat={weather.oneday.coord.lat}
