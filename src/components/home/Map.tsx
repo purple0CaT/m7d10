@@ -14,7 +14,7 @@ const Map = () => {
   return (
     <div
       style={{
-        height: "13rem",
+        height: "15rem",
         width: "100%",
         // borderRadius: "20px !important",
         // overflow: "hidden !important",
