@@ -14,13 +14,16 @@ function Profile(props: any, { history }: Types) {
   const dispatch = useDispatch();
   //
   const addCordinates = () => {
-    // history.push("/");
-    // if (weathCoord.longitude) {
-    //   dispatch(
-    //     setCoords({ lon: weathCoord.longitude, lat: weathCoord.latitude })
-    //   );
-    // }
+    navigator.geolocation.getCurrentPosition(function (position) {
+      dispatch(
+        setCoords({
+          lon: position.coords.longitude,
+          lat: position.coords.latitude,
+        })
+      );
+    });
   };
+
   //
   useEffect(() => {
     addCordinates();
@@ -35,7 +38,7 @@ function Profile(props: any, { history }: Types) {
       <Row>
         <Col xs="6">
           <div className="profCard p-1 my-1  text-center">
-            {weathCoord.latitude !== "" && (
+            {weathCoord.latitude && (
               <>
                 <div className="my-2">
                   <Link

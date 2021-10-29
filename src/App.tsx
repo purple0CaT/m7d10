@@ -5,15 +5,14 @@ import Navbar from "./components/navbar/Navbar";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/home/Home";
 import { useEffect } from "react";
-import { geolocated } from "react-geolocated";
+import { geolocated, GeolocatedProps } from "react-geolocated";
 import { useDispatch } from "react-redux";
 import { setCoords } from "./redux/action/actions";
 import Profile from "./components/profile/Profile";
 
-function App(props: any) {
+function App(props: GeolocatedProps) {
   const dispatch = useDispatch();
-
-  const setCordinatesFetch = () => {};
+  
 
   useEffect(() => {
     let longitude = props.coords ? props.coords.longitude : null; //
@@ -21,7 +20,7 @@ function App(props: any) {
     if (longitude & latitude) {
       dispatch(setCoords({ lon: longitude, lat: latitude }));
     }
-    setCordinatesFetch();
+    // setCordinatesFetch();
   }, [props.coords]);
   return (
     <Router>
