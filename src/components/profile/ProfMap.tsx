@@ -2,12 +2,12 @@ import { Component, useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { useSelector } from "react-redux";
 import { MyCords, ReduxStore } from "../../types/storeType";
-// import "../home/style.css";
+import "./style.css";
 //
 const Marker = ({ text }: any) => (
   <>
-    <div className="pin"></div>
-    <div className="pulse"></div>
+    <div className="pin1"></div>
+    <div className="pulse1"></div>
   </>
 );
 interface Types {
