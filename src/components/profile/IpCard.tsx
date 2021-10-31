@@ -47,5 +47,4 @@ function IpCard() {
     </div>
   );
 }
-
 export default IpCard;
