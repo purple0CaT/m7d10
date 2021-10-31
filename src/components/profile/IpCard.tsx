@@ -7,7 +7,7 @@ function IpCard() {
   //
   const fetchIp = async () => {
     try {
-      const res = await fetch("http://ip-api.com/json/");
+      const res = await fetch("https://geolocation-db.com/json/");
       if (res.ok) {
         const data = await res.json();
         setIpLoc(data);
@@ -28,11 +28,11 @@ function IpCard() {
           <div>
             <h5 className="text-muted">Your ip location:</h5>
             <span>
-              {IpLoc.country},{IpLoc.regionName},{IpLoc.city},{IpLoc.zip}
+              {IpLoc.country_name}, {IpLoc.state}, {IpLoc.city}, {IpLoc.postal}
             </span>
           </div>
           <div className="d-flex justify-content-center mt-2">
-            <ProfMap lon={IpLoc.lon} lat={IpLoc.lat} />
+            <ProfMap lon={IpLoc.longitude} lat={IpLoc.latitude} />
           </div>
         </>
       ) : (
