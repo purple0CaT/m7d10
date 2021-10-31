@@ -21,6 +21,7 @@ export const initialState: ReduxStore = {
     days: [],
     latest: [],
     loading: false,
+    history: [],
     mycord: {
       longitude: null,
       latitude: null,

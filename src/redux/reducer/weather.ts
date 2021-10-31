@@ -12,6 +12,16 @@ export const WeatherRed = (state = initialState.weather, action: any) => {
         ...state,
         oneday: action.payload,
       };
+    case "WEATHER_ADD_HISTORY":
+      return {
+        ...state,
+        history: [...state.history, action.payload],
+      };
+    case "WEATHER_CLEAR_HISTORY":
+      return {
+        ...state,
+        history: [],
+      };
     case "WEATHER_FDAYS_ADD":
       return {
         ...state,

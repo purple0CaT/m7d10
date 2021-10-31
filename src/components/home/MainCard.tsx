@@ -74,7 +74,7 @@ function MainCard() {
   }, [weather.search]);
   return (
     <>
-      {weather.loading ? (
+      {weather.loading && (
         <>
           <Col xs="12" md="6" className="my-1 p-1">
             <div
@@ -182,10 +182,6 @@ function MainCard() {
           </Col>
           <FourDay />
         </>
-      ) : (
-        <div className="text-center w-100">
-          <h1 className="text-muted">Search city</h1>
-        </div>
       )}
     </>
   );

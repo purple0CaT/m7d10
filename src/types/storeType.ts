@@ -8,6 +8,7 @@ interface ReduxStore {
     days: any;
     latest: any;
     loading: boolean;
+    history: any[];
     mycord: MyCords;
   };
 }

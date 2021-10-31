@@ -9,10 +9,10 @@ import { geolocated, GeolocatedProps } from "react-geolocated";
 import { useDispatch } from "react-redux";
 import { setCoords } from "./redux/action/actions";
 import Profile from "./components/profile/Profile";
+import Weather from "./components/home/Weather";
 
 function App(props: GeolocatedProps) {
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
     let longitude = props.coords ? props.coords.longitude : null; //
@@ -27,6 +27,7 @@ function App(props: GeolocatedProps) {
       <Navbar />
       <Switch>
         <Route path="/" exact render={() => <Home />} />
+        <Route path="/weather" exact render={() => <Weather />} />
         <Route
           path="/profile"
           exact

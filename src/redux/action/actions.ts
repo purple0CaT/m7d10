@@ -12,6 +12,10 @@ export const clearCoord = () => ({
   type: "USER_POSITION_DELETE",
   payload: "",
 });
+export const deleteHistory = () => ({
+  type: "WEATHER_CLEAR_HISTORY",
+  payload: "",
+});
 
 export const setSearch = (value: string | null) => ({
   type: "SET_SEARCH",
@@ -34,7 +38,7 @@ export const setCleanAll = () => {
 
 // SEARCH BY COORDINATES
 export const setCoords = (cords: any) => {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch, getState: any) => {
     dispatch({ type: "WEATHER_LOADING", payload: false });
     dispatch({ type: "SET_SEARCH", payload: "" });
     dispatch({
@@ -51,7 +55,14 @@ export const setCoords = (cords: any) => {
       if (res.ok) {
         const weather: any = await res.json();
         dispatch({ type: "WEATHER_DAY_ADD", payload: weather });
-        // 5Days
+        //
+        let thisState = getState();
+        let historyCheck = thisState.weather.history.indexOf(
+          (w: any) => w.name !== weather.name
+        );
+        if (historyCheck < 0) {
+          dispatch({ type: "WEATHER_ADD_HISTORY", payload: weather });
+        } // 5Days
         // SEARCH 5 DAYS
         url = `${process.env.REACT_APP_URLFETCH}/forecast?lat=${cords.lat}&lon=${cords.lon}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
         try {
@@ -76,7 +87,7 @@ export const setCoords = (cords: any) => {
 export const runSearch = () => {
   return async (dispatch: Dispatch, getState: any) => {
     dispatch({ type: "WEATHER_LOADING", payload: false });
-    const state = getState();
+    let state = getState();
     // 1 day
     let url = `${process.env.REACT_APP_URLFETCH}/weather?q=${state.weather.search}&units=metric&appid=${process.env.REACT_APP_APIKEY}`;
     try {
@@ -84,6 +95,14 @@ export const runSearch = () => {
       if (res.ok) {
         const weather: any = await res.json();
         dispatch({ type: "WEATHER_DAY_ADD", payload: weather });
+        //
+        let thisState = getState();
+        let historyCheck = thisState.weather.history.indexOf(
+          (w: any) => w.name !== weather.name
+        );
+        if (historyCheck < 0) {
+          dispatch({ type: "WEATHER_ADD_HISTORY", payload: weather });
+        }
         // 4day
         url = `${process.env.REACT_APP_URLFETCH}/forecast?q=${state.weather.search}&units=metric&exclude=daily&appid=${process.env.REACT_APP_APIKEY}`;
         try {

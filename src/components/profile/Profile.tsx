@@ -43,7 +43,7 @@ function Profile(props: any, { history }: Types) {
                 <div className="my-2">
                   <Link
                     className="navBtn"
-                    to="/"
+                    to="/weather"
                     onClick={() =>
                       dispatch(
                         setCoords({

@@ -41,7 +41,7 @@ function Navbar() {
                 onChange={(e) => {
                   dispatch(setSearch(e.target.value));
                   if (e.target.value.length > 2) {
-                    history.push("/");
+                    history.push("/weather");
                   }
                 }}
               />
