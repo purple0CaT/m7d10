@@ -76,7 +76,7 @@ function MainCard() {
     <>
       {weather.loading && (
         <>
-          <Col xs="12" md="6" className="my-1 p-1">
+          <Col xs="12" md="7" className="my-1 p-1">
             <div
               className="d-flex justify-content-between mainCard p-2"
               style={{
@@ -117,7 +117,7 @@ function MainCard() {
                   {weather.oneday.main.pressure} hPa
                 </span>
                 <div style={{ maxHeight: "5rem" }}>
-                  <span className="mr-2 my-1">
+                  <span className="my-1">
                     <small className="text-muted font-weight-bold">Min: </small>
                     {Math.floor(weather.oneday.main.temp_min)}°C
                   </span>

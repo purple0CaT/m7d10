@@ -21,7 +21,7 @@ function Home(props: any) {
             <Col xs="6" md="4" className="my-1">
               <Link
                 to="/weather"
-                className="d-flex flex-column smallCard"
+                className="d-flex flex-column smallCard hoverCard"
                 key={W.main.temp + W.dt}
                 style={{ color: "unset " }}
                 onClick={() => {

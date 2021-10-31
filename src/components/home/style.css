@@ -1,4 +1,3 @@
-
 .mainCard {
   border-radius: 20px;
   background-color: rgb(182, 182, 182);
@@ -9,6 +8,21 @@
 }
 .imageWeather {
   width: 100%;
+}
+.hoverCard {
+  position: relative;
+  transition: 0.15s !important;
+}
+.hoverCard:hover {
+  transform: scale(1.05);
+  z-index: 100;
+  border: 1px solid white !important;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.514);
+}
+.hoverCard:active {
+  transform: scale(1);
+  z-index: 100;
+  box-shadow: 0 0 25px rgba(128, 128, 128, 0.514);
 }
 .compass {
   margin-left: 1rem;
