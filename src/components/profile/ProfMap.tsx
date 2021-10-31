@@ -11,10 +11,11 @@ const Marker = ({ text }: any) => (
   </>
 );
 interface Types {
-  cords: MyCords;
+  lat: number | null;
+  lon: number | null;
 }
 
-const ProfMap = () => {
+const ProfMap = ({ lat, lon }: Types) => {
   const weathCoord = useSelector((state: ReduxStore) => state.weather.mycord);
 
   //
@@ -22,42 +23,37 @@ const ProfMap = () => {
   const [Load, setLoad] = useState(false);
 
   useEffect(() => {
-    console.log(weathCoord);
     setLoad(true);
     setTimeout(() => setLoad(false), 1);
   }, [weathCoord]);
   return (
     <>
-      {/* {!Load && ( */}
-      <div
-        style={{
-          height: "15rem",
-          width: "95%",
-          border: "1px solid rgba(117, 117, 117, 0.2)",
-          borderRadius: "2rem",
-          overflow: "hidden",
-        }}
-      >
-        <GoogleMapReact
-          bootstrapURLKeys={{
-            key: process.env.REACT_APP_MAPAPI!,
-            language: "en",
-            region: "US",
+      {lat && (
+        <div
+          style={{
+            height: "15rem",
+            width: "95%",
+            border: "1px solid rgba(117, 117, 117, 0.2)",
+            borderRadius: "2rem",
+            overflow: "hidden",
           }}
-          defaultCenter={{
-            lat: weathCoord.latitude!,
-            lng: weathCoord.longitude!,
-          }}
-          defaultZoom={9}
         >
-          <Marker
-            lat={weathCoord.latitude}
-            lng={weathCoord.longitude}
-            text={weather.oneday.name}
-          />
-        </GoogleMapReact>
-      </div>
-      {/* )} */}
+          <GoogleMapReact
+            bootstrapURLKeys={{
+              key: process.env.REACT_APP_MAPAPI!,
+              language: "en",
+              region: "US",
+            }}
+            defaultCenter={{
+              lat: lat,
+              lng: lon!,
+            }}
+            defaultZoom={9}
+          >
+            <Marker lat={lat} lng={lon} />
+          </GoogleMapReact>
+        </div>
+      )}
     </>
   );
 };

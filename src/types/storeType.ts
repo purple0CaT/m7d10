@@ -15,5 +15,21 @@ interface MyCords {
   longitude: number | null;
   latitude: number | null;
 }
+interface IpType {
+  status: string;
+  country: string;
+  countryCode: string;
+  region: string;
+  regionName: string;
+  city: string;
+  zip: string;
+  lat: number;
+  lon: number;
+  timezone: string;
+  isp: string;
+  org: string;
+  as: string;
+  query: string;
+}
 
-export type { ReduxStore, MyCords };
+export type { ReduxStore, MyCords,IpType };
