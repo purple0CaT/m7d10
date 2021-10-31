@@ -18,7 +18,7 @@ function Home(props: any) {
       <Row>
         {weather.history?.length > 0 ? (
           weather.history.map((W) => (
-            <Col xs="6" md="4" className="my-1">
+            <Col xs="6" md="3" className="my-1">
               <Link
                 to="/weather"
                 className="d-flex flex-column smallCard hoverCard"
