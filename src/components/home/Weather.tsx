@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import "./style.css";
 import MainCard from "./MainCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ReduxStore } from "../../types/storeType";
+import { runSearch } from "../../redux/action/actions";
 
 function Weather() {
   const weather = useSelector((state: ReduxStore) => state.weather);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(runSearch());
+  }, []);
 
   return (
     <Container>
