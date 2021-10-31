@@ -50,15 +50,15 @@ export const setCoords = (cords: any) => {
     });
     // 1 day
     let url = `${process.env.REACT_APP_URLFETCH}/weather?lat=${cords.lat}&lon=${cords.lon}&units=metric&appid=${process.env.REACT_APP_APIKEY}`;
+    let thisState = getState();
     try {
       const res = await fetch(url);
       if (res.ok) {
         const weather: any = await res.json();
         dispatch({ type: "WEATHER_DAY_ADD", payload: weather });
         //
-        let thisState = getState();
-        let historyCheck = thisState.weather.history.indexOf(
-          (w: any) => w.name !== weather.name
+        let historyCheck = thisState.weather.history.findIndex(
+          (w: any) => w.name === weather.name
         );
         if (historyCheck < 0) {
           dispatch({ type: "WEATHER_ADD_HISTORY", payload: weather });
@@ -97,8 +97,8 @@ export const runSearch = () => {
         dispatch({ type: "WEATHER_DAY_ADD", payload: weather });
         //
         let thisState = getState();
-        let historyCheck = thisState.weather.history.indexOf(
-          (w: any) => w.name !== weather.name
+        let historyCheck = thisState.weather.history.findIndex(
+          (w: any) => w.name === weather.name
         );
         if (historyCheck < 0) {
           dispatch({ type: "WEATHER_ADD_HISTORY", payload: weather });

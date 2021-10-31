@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteHistory } from "../../redux/action/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { deleteHistory, setSearch } from "../../redux/action/actions";
 import { IpType } from "../../types/storeType";
+import Weather from "../home/Weather";
 import ProfMap from "./ProfMap";
 
 function IpCard() {
+  const weather = useSelector((state: any) => state.weather);
   const dispatch = useDispatch();
   const [IpLoc, setIpLoc] = useState<IpType>();
   //
@@ -53,7 +56,22 @@ function IpCard() {
               Delete history!
             </button>
           </div>
-          <h2 className="text-muted">No data!</h2>
+          <hr />
+          <div>
+            {weather.history &&
+              weather.history.map((W: any) => (
+                <div className="navBtn my-1">
+                  <Link
+                    to="/weather"
+                    onClick={() => dispatch(setSearch(W.name))}
+                    className="text-white"
+                  >
+                    <h6>{W.name}</h6>
+                  </Link>
+                </div>
+              ))}
+          </div>
+          {/* <h2 className="text-muted">No data!</h2> */}
         </div>
       )}
     </div>
