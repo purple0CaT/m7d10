@@ -6,11 +6,15 @@ function IpCard() {
   const [IpLoc, setIpLoc] = useState<IpType>();
   //
   const fetchIp = async () => {
+    console.log("Ip");
     try {
-      const res = await fetch("https://geolocation-db.com/json/");
+      const res = await fetch(
+        `https://api.ipdata.co?api-key=${process.env.REACT_APP_IPAPIKEY}`
+      );
       if (res.ok) {
         const data = await res.json();
-        setIpLoc(data);
+        // setIpLoc(data);
+        console.log(res);
       } else {
         console.log("Error 400");
       }
