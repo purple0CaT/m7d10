@@ -55,6 +55,13 @@ function MainCard() {
             colorTwo: "rgb(182, 182, 182)",
           });
           break;
+        case "Drizzle":
+          setWeatherImg({
+            state: "https://ssl.gstatic.com/onebox/weather/64/mist.png",
+            colorOne: "#ffffff",
+            colorTwo: "rgb(215, 236, 255)",
+          });
+          break;
         default:
           setWeatherImg({
             state: "",

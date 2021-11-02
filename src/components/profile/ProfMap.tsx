@@ -2,7 +2,7 @@ import { Component, useEffect, useState } from "react";
 import GoogleMapReact from "google-map-react";
 import { useSelector } from "react-redux";
 import { MyCords, ReduxStore } from "../../types/storeType";
-import "./style.css";
+import "./mapStyle.css";
 //
 const Marker = ({ text }: any) => (
   <>

@@ -37,7 +37,7 @@ function IpCard() {
       {IpLoc ? (
         <>
           <div>
-            <h5 className="text-muted">Your ip location:</h5>
+            <h5 className="text-muted"></h5>
             <span>
               {IpLoc.country_name}, {IpLoc.state}, {IpLoc.city}, {IpLoc.postal}
             </span>
@@ -52,6 +52,7 @@ function IpCard() {
             <button
               className="navBtn"
               onClick={() => dispatch(deleteHistory())}
+              style={{ color: "Brown", backgroundColor: "whitesmoke" }}
             >
               Delete history!
             </button>
@@ -60,14 +61,16 @@ function IpCard() {
           <div>
             {weather.history &&
               weather.history.map((W: any) => (
-                <div className="navBtn my-1">
-                  <Link
-                    to="/weather"
-                    onClick={() => dispatch(setSearch(W.name))}
-                    className="text-white"
-                  >
-                    <h6>{W.name}</h6>
-                  </Link>
+                <div>
+                  <div className="mx-auto">
+                    <Link
+                      to="/weather"
+                      onClick={() => dispatch(setSearch(W.name))}
+                      className=""
+                    >
+                      <h6>{W.name}</h6>
+                    </Link>
+                  </div>
                 </div>
               ))}
           </div>

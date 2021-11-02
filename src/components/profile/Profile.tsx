@@ -40,9 +40,9 @@ function Profile(props: any, { history }: Types) {
           <div className="profCard p-1 my-1  text-center">
             {weathCoord.latitude && (
               <>
-                <div className="my-2">
+                <div className="my-2 w-50 mx-auto">
                   <Link
-                    className="navBtn"
+                    className="navBtn d-block"
                     to="/weather"
                     onClick={() =>
                       dispatch(
@@ -64,6 +64,7 @@ function Profile(props: any, { history }: Types) {
                 </div>
                 <div className=" my-2">
                   <button
+                    style={{ color: "Brown", backgroundColor: "whitesmoke" }}
                     className="navBtn"
                     onClick={() => {
                       dispatch(clearCoord());

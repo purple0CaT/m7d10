@@ -40,7 +40,9 @@ function Navbar() {
                 placeholder="...search"
                 onChange={(e) => {
                   dispatch(setSearch(e.target.value));
-                  if (e.target.value.length > 2) {
+                }}
+                onKeyUp={(e) => {
+                  if (e.key === "Enter") {
                     history.push("/weather");
                   }
                 }}
